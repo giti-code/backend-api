@@ -12,9 +12,11 @@ export const errorHandler: ErrorRequestHandler = (error, _request, response, nex
       error: {
         code: error.code,
         message: error.message,
+        ...(error.details !== undefined && {
+          details: error.details,
+        }),
       },
     });
-
     return;
   }
 

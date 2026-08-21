@@ -9,7 +9,9 @@ export const validateRequest = (schema: ZodType): RequestHandler => {
     const result = schema.safeParse(request.body);
 
     if (!result.success) {
-      next(new AppError('Request validation failed', ErrorCode.VALIDATION_ERROR, 400));
+      const details = result.error.flatten().fieldErrors;
+
+      next(new AppError('Request validation failed', ErrorCode.VALIDATION_ERROR, 400, details));
 
       return;
     }
