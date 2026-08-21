@@ -1,12 +1,11 @@
 import { Router } from 'express';
 
+import { sendSuccess } from '../../shared/http/api-response.js';
+
 export const apiRouter: Router = Router();
 
-apiRouter.get('/health', (req, res) => {
-  res.status(200).json({
-    status: true,
-    data: {
-      status: 'ok',
-    },
+apiRouter.get('/health', (_request, response) => {
+  sendSuccess(response, {
+    status: 'ok',
   });
 });
