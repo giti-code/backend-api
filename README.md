@@ -10,15 +10,15 @@ This project is designed to serve as the complete backend of a frontend applicat
 
 The primary goals of this project are:
 
-* Build a scalable and maintainable backend architecture.
-* Follow Clean Architecture principles.
-* Apply SOLID principles throughout the codebase.
-* Keep business logic independent from frameworks and infrastructure.
-* Provide a stable and well-defined REST API for frontend applications.
-* Keep database access isolated behind repository abstractions.
-* Make the application highly testable.
-* Follow modern TypeScript and Node.js development practices.
-* Prepare the project for long-term growth and production usage.
+- Build a scalable and maintainable backend architecture.
+- Follow Clean Architecture principles.
+- Apply SOLID principles throughout the codebase.
+- Keep business logic independent from frameworks and infrastructure.
+- Provide a stable and well-defined REST API for frontend applications.
+- Keep database access isolated behind repository abstractions.
+- Make the application highly testable.
+- Follow modern TypeScript and Node.js development practices.
+- Prepare the project for long-term growth and production usage.
 
 ---
 
@@ -72,11 +72,11 @@ Contains the core business rules of the application.
 
 Responsibilities:
 
-* Entities
-* Value Objects
-* Domain rules
-* Domain errors
-* Repository contracts
+- Entities
+- Value Objects
+- Domain rules
+- Domain errors
+- Repository contracts
 
 The Domain layer must not depend on infrastructure or framework-specific implementations.
 
@@ -88,11 +88,11 @@ Contains application-specific business workflows.
 
 Responsibilities:
 
-* Use Cases
-* Application Services
-* DTOs
-* Application-level validation
-* Orchestration of domain objects and repositories
+- Use Cases
+- Application Services
+- DTOs
+- Application-level validation
+- Orchestration of domain objects and repositories
 
 Example:
 
@@ -113,14 +113,14 @@ Contains implementations that communicate with external systems.
 
 Responsibilities:
 
-* Prisma
-* PostgreSQL
-* Repository implementations
-* Authentication infrastructure
-* Logging
-* External services
-* Configuration
-* Persistence
+- Prisma
+- PostgreSQL
+- Repository implementations
+- Authentication infrastructure
+- Logging
+- External services
+- Configuration
+- Persistence
 
 Infrastructure implements interfaces defined by the inner layers.
 
@@ -132,12 +132,12 @@ Responsible for exposing the application through HTTP APIs.
 
 Responsibilities:
 
-* Routes
-* Controllers
-* HTTP middleware
-* Request validation
-* Response formatting
-* HTTP-specific error handling
+- Routes
+- Controllers
+- HTTP middleware
+- Request validation
+- Response formatting
+- HTTP-specific error handling
 
 Controllers should remain thin and delegate application logic to Use Cases.
 
@@ -147,62 +147,62 @@ Controllers should remain thin and delegate application logic to Use Cases.
 
 ### Runtime
 
-* Node.js
-* TypeScript
+- Node.js
+- TypeScript
 
 ### Backend Framework
 
-* Express.js
+- Express.js
 
 ### Database
 
-* PostgreSQL
+- PostgreSQL
 
 ### ORM
 
-* Prisma
+- Prisma
 
 ### Validation
 
-* Zod
+- Zod
 
 ### Authentication & Authorization
 
-* JWT
-* Refresh Tokens
-* RBAC
-* Permissions
+- JWT
+- Refresh Tokens
+- RBAC
+- Permissions
 
 ### Testing
 
-* Vitest
-* Integration Tests
-* End-to-End Tests
+- Vitest
+- Integration Tests
+- End-to-End Tests
 
 ### Documentation
 
-* OpenAPI
-* Swagger UI
+- OpenAPI
+- Swagger UI
 
 ### Logging
 
-* Pino
+- Pino
 
 ### Code Quality
 
-* ESLint
-* Prettier
-* TypeScript strict mode
+- ESLint
+- Prettier
+- TypeScript strict mode
 
 ### Infrastructure
 
-* Docker
-* Docker Compose
+- Docker
+- Docker Compose
 
 ### Version Control
 
-* Git
-* Conventional Commits
+- Git
+- Conventional Commits
 
 ---
 
@@ -266,11 +266,11 @@ The following principles are considered mandatory throughout the project.
 
 The codebase should follow:
 
-* Single Responsibility Principle
-* Open/Closed Principle
-* Liskov Substitution Principle
-* Interface Segregation Principle
-* Dependency Inversion Principle
+- Single Responsibility Principle
+- Open/Closed Principle
+- Liskov Substitution Principle
+- Interface Segregation Principle
+- Dependency Inversion Principle
 
 ---
 
@@ -278,13 +278,13 @@ The codebase should follow:
 
 Code should prioritize:
 
-* Readability
-* Explicit naming
-* Small focused functions
-* Low coupling
-* High cohesion
-* Predictable behavior
-* Minimal duplication
+- Readability
+- Explicit naming
+- Small focused functions
+- Low coupling
+- High cohesion
+- Predictable behavior
+- Minimal duplication
 
 ---
 
@@ -356,18 +356,18 @@ Security will be treated as a first-class concern.
 
 Planned features include:
 
-* JWT authentication
-* Refresh token mechanism
-* Password hashing
-* Role-Based Access Control
-* Permission-based authorization
-* Request validation
-* Rate limiting
-* CORS configuration
-* Secure HTTP headers
-* Environment-based secrets
-* Centralized error handling
-* Protection against common API vulnerabilities
+- JWT authentication
+- Refresh token mechanism
+- Password hashing
+- Role-Based Access Control
+- Permission-based authorization
+- Request validation
+- Rate limiting
+- CORS configuration
+- Secure HTTP headers
+- Environment-based secrets
+- Centralized error handling
+- Protection against common API vulnerabilities
 
 ---
 
@@ -395,13 +395,13 @@ The API will be documented using OpenAPI.
 
 The documentation will describe:
 
-* Endpoints
-* HTTP methods
-* Request parameters
-* Request bodies
-* Response schemas
-* Authentication requirements
-* Error responses
+- Endpoints
+- HTTP methods
+- Request parameters
+- Request bodies
+- Response schemas
+- Authentication requirements
+- Error responses
 
 The API documentation will become part of the API contract shared between backend and frontend development.
 
@@ -413,12 +413,12 @@ The application will use structured logging.
 
 The logging system will eventually provide:
 
-* Request IDs
-* HTTP request logs
-* Application logs
-* Error logs
-* Database-related errors
-* Production-friendly structured output
+- Request IDs
+- HTTP request logs
+- Application logs
+- Error logs
+- Database-related errors
+- Production-friendly structured output
 
 Sensitive information such as passwords, tokens, and secrets must never be logged.
 
@@ -480,109 +480,109 @@ The project will be built incrementally.
 
 ## Phase 1 — Project Foundation
 
-* [x] Create GitHub repository
-* [x] Add MIT License
-* [x] Create initial README
-* [ ] Initialize Node.js project
-* [ ] Configure package manager
-* [ ] Configure TypeScript
-* [ ] Configure ESLint
-* [ ] Configure Prettier
-* [ ] Configure Git hooks
-* [ ] Configure environment variables
-* [ ] Create initial project structure
+- [x] Create GitHub repository
+- [x] Add MIT License
+- [x] Create initial README
+- [ ] Initialize Node.js project
+- [ ] Configure package manager
+- [ ] Configure TypeScript
+- [ ] Configure ESLint
+- [ ] Configure Prettier
+- [ ] Configure Git hooks
+- [ ] Configure environment variables
+- [ ] Create initial project structure
 
 ---
 
 ## Phase 2 — Application Foundation
 
-* [ ] Create Express application
-* [ ] Create application bootstrap
-* [ ] Create dependency injection strategy
-* [ ] Create configuration module
-* [ ] Create global error handling
-* [ ] Create API response conventions
-* [ ] Create request ID handling
-* [ ] Create logging infrastructure
-* [ ] Add health check endpoint
+- [ ] Create Express application
+- [ ] Create application bootstrap
+- [ ] Create dependency injection strategy
+- [ ] Create configuration module
+- [ ] Create global error handling
+- [ ] Create API response conventions
+- [ ] Create request ID handling
+- [ ] Create logging infrastructure
+- [ ] Add health check endpoint
 
 ---
 
 ## Phase 3 — Database
 
-* [ ] Configure PostgreSQL
-* [ ] Install Prisma
-* [ ] Configure Prisma Client
-* [ ] Configure Prisma Migrate
-* [ ] Create initial database schema
-* [ ] Create database connection layer
-* [ ] Define repository abstractions
-* [ ] Implement repository pattern
-* [ ] Add database integration tests
+- [ ] Configure PostgreSQL
+- [ ] Install Prisma
+- [ ] Configure Prisma Client
+- [ ] Configure Prisma Migrate
+- [ ] Create initial database schema
+- [ ] Create database connection layer
+- [ ] Define repository abstractions
+- [ ] Implement repository pattern
+- [ ] Add database integration tests
 
 ---
 
 ## Phase 4 — Validation & API Standards
 
-* [ ] Configure Zod
-* [ ] Create request validation system
-* [ ] Define API response structure
-* [ ] Define API error structure
-* [ ] Implement pagination
-* [ ] Implement filtering
-* [ ] Implement sorting
-* [ ] Define API versioning strategy
+- [ ] Configure Zod
+- [ ] Create request validation system
+- [ ] Define API response structure
+- [ ] Define API error structure
+- [ ] Implement pagination
+- [ ] Implement filtering
+- [ ] Implement sorting
+- [ ] Define API versioning strategy
 
 ---
 
 ## Phase 5 — Authentication & Authorization
 
-* [ ] User entity
-* [ ] Authentication use cases
-* [ ] Password hashing
-* [ ] JWT access tokens
-* [ ] Refresh tokens
-* [ ] Role-Based Access Control
-* [ ] Permission system
-* [ ] Authentication middleware
-* [ ] Authorization middleware
+- [ ] User entity
+- [ ] Authentication use cases
+- [ ] Password hashing
+- [ ] JWT access tokens
+- [ ] Refresh tokens
+- [ ] Role-Based Access Control
+- [ ] Permission system
+- [ ] Authentication middleware
+- [ ] Authorization middleware
 
 ---
 
 ## Phase 6 — Testing
 
-* [ ] Configure Vitest
-* [ ] Unit testing infrastructure
-* [ ] Integration testing infrastructure
-* [ ] E2E testing infrastructure
-* [ ] Test database strategy
-* [ ] CI test pipeline
+- [ ] Configure Vitest
+- [ ] Unit testing infrastructure
+- [ ] Integration testing infrastructure
+- [ ] E2E testing infrastructure
+- [ ] Test database strategy
+- [ ] CI test pipeline
 
 ---
 
 ## Phase 7 — API Documentation
 
-* [ ] Configure OpenAPI
-* [ ] Configure Swagger UI
-* [ ] Document authentication
-* [ ] Document API conventions
-* [ ] Document modules
-* [ ] Keep API contract synchronized with implementation
+- [ ] Configure OpenAPI
+- [ ] Configure Swagger UI
+- [ ] Document authentication
+- [ ] Document API conventions
+- [ ] Document modules
+- [ ] Keep API contract synchronized with implementation
 
 ---
 
 ## Phase 8 — Production Readiness
 
-* [ ] Dockerfile
-* [ ] Docker Compose
-* [ ] Production configuration
-* [ ] Security hardening
-* [ ] Rate limiting
-* [ ] Graceful shutdown
-* [ ] Health checks
-* [ ] Structured production logging
-* [ ] CI/CD pipeline
-* [ ] Database migration deployment strategy
+- [ ] Dockerfile
+- [ ] Docker Compose
+- [ ] Production configuration
+- [ ] Security hardening
+- [ ] Rate limiting
+- [ ] Graceful shutdown
+- [ ] Health checks
+- [ ] Structured production logging
+- [ ] CI/CD pipeline
+- [ ] Database migration deployment strategy
 
 ---
 
