@@ -1,0 +1,24 @@
+{
+  "name": "backend-api",
+  "version": "0.1.0",
+  "description": "Production-ready API-first backend built with TypeScript, Node.js, Express, PostgreSQL and Prisma",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.22.0",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module"
+}
