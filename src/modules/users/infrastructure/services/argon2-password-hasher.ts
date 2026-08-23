@@ -8,4 +8,8 @@ export class Argon2PasswordHasher implements PasswordHasher {
       type: argon2.argon2id,
     });
   }
+
+  async compare(password: string, passwordHash: string): Promise<boolean> {
+    return argon2.verify(passwordHash, password);
+  }
 }
