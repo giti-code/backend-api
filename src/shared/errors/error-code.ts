@@ -6,6 +6,7 @@ export const ErrorCode = {
   FORBIDDEN: 'FORBIDDEN',
   CONFLICT: 'CONFLICT',
   USER_ALREADY_EXISTS: 'USER_ALREADY_EXISTS',
+  USER_NOT_FOUND: 'USER_NOT_FOUND',
 } as const;
 
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];

@@ -5,6 +5,9 @@ export const getHttpStatusFromErrorCode = (code: ErrorCode): number => {
     case ErrorCode.VALIDATION_ERROR:
       return 400;
 
+    case ErrorCode.USER_NOT_FOUND:
+      return 404;
+
     case ErrorCode.USER_ALREADY_EXISTS:
       return 409;
 
