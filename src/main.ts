@@ -4,6 +4,7 @@ import {
   connectDatabase,
   disconnectDatabase,
 } from './infrastructure/database/prisma/prisma-database.js';
+import { logger } from './infrastructure/logging/logger.js';
 
 const startServer = async (): Promise<void> => {
   await connectDatabase();
@@ -11,7 +12,12 @@ const startServer = async (): Promise<void> => {
   const app = createApp();
 
   const server = app.listen(env.PORT, () => {
-    console.log(`API server is running on port ${env.PORT}`);
+    logger.info(
+      {
+        port: env.PORT,
+      },
+      'API server started',
+    );
   });
 
   const shutdown = async (): Promise<void> => {
@@ -26,6 +32,11 @@ const startServer = async (): Promise<void> => {
 };
 
 startServer().catch((error: unknown) => {
-  console.error('Failed to start application:', error);
+  logger.error(
+    {
+      error,
+    },
+    'Failed to start application',
+  );
   process.exit(1);
 });

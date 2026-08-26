@@ -4,6 +4,7 @@ import { ApplicationError } from '../../shared/errors/application-error.js';
 import { AppError } from '../../shared/errors/app-error.js';
 import { ErrorCode } from '../../shared/errors/error-code.js';
 import { getHttpStatusFromErrorCode } from './error-mapper.js';
+import { logger } from '../../infrastructure/logging/logger.js';
 
 export const errorHandler: ErrorRequestHandler = (error, _request, response, next) => {
   void next;
@@ -40,7 +41,12 @@ export const errorHandler: ErrorRequestHandler = (error, _request, response, nex
     return;
   }
 
-  console.error(error);
+  logger.error(
+    {
+      error,
+    },
+    'Unhandled application error',
+  );
 
   response.status(500).json({
     success: false,
