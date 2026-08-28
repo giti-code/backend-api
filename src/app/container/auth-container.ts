@@ -17,4 +17,6 @@ export const loginUseCase = new LoginUseCase(
     userRepository,
     passwordHasher,
     tokenService,
+    refreshTokenRepository,
+    refreshTokenGenerator,
 );

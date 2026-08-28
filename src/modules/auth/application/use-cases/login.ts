@@ -6,6 +6,9 @@ import {AppError} from '../../../../shared/errors/app-error.js';
 import {ErrorCode} from '../../../../shared/errors/error-code.js';
 import type {TokenService} from "../services/token-service.js";
 
+import type {RefreshTokenRepository} from '../repositories/refresh-token-repository.js';
+import type {RefreshTokenGenerator} from '../services/refresh-token-generator.js';
+
 interface LoginInput {
     email: string;
     password: string;
@@ -14,6 +17,7 @@ interface LoginInput {
 interface LoginResult {
     user: User;
     accessToken: string;
+    refreshToken: string;
 }
 
 export class LoginUseCase {
@@ -21,6 +25,8 @@ export class LoginUseCase {
         private readonly userRepository: UserRepository,
         private readonly passwordHasher: PasswordHasher,
         private readonly tokenService: TokenService,
+        private readonly refreshTokenRepository: RefreshTokenRepository,
+        private readonly refreshTokenGenerator: RefreshTokenGenerator,
     ) {
     }
 
@@ -60,9 +66,27 @@ export class LoginUseCase {
             userId: user.id,
         });
 
+        const refreshToken = this.refreshTokenGenerator.generate();
+
+        const tokenHash = this.refreshTokenGenerator.hash(refreshToken);
+
+        const expiresAt = new Date();
+
+        expiresAt.setDate(expiresAt.getDate() + 30);
+
+        await this.refreshTokenRepository.create({
+            id: this.refreshTokenGenerator.generateId(),
+            userId: user.id,
+            tokenHash,
+            expiresAt,
+            revokedAt: null,
+            createdAt: new Date(),
+        });
+
         return {
             user,
             accessToken,
+            refreshToken,
         };
     }
 }
