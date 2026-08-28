@@ -5,7 +5,8 @@ import { PrismaUserRepository } from '../../modules/users/infrastructure/prisma-
 
 const userRepository = new PrismaUserRepository();
 const passwordHasher = new Argon2PasswordHasher();
-const tokenService = new JwtTokenService();
+
+export const tokenService = new JwtTokenService();
 
 export const loginUseCase = new LoginUseCase(
     userRepository,
