@@ -1,14 +1,14 @@
-import type { NextFunction, Request, Response } from 'express';
+import type {NextFunction, Request, Response} from 'express';
 
-import { tokenService } from '../container/auth-container.js';
-import { AppError } from '../../shared/errors/app-error.js';
-import { ErrorCode } from '../../shared/errors/error-code.js';
+import {tokenService} from '../container/auth-container.js';
+import {AppError} from '../../shared/errors/app-error.js';
+import {ErrorCode} from '../../shared/errors/error-code.js';
 
-export const authenticationMiddleware = (
+export const authenticationMiddleware = async (
     request: Request,
     _response: Response,
     next: NextFunction,
-): void => {
+): Promise<void> => {
     const authorization = request.header('Authorization');
 
     if (!authorization?.startsWith('Bearer ')) {
@@ -37,19 +37,13 @@ export const authenticationMiddleware = (
         return;
     }
 
-    tokenService
-        .verify(token)
-        .then((payload) => {
-            request.userId = payload.userId;
-            next();
-        })
-        .catch(() => {
-            next(
-                new AppError(
-                    'Invalid or expired token',
-                    ErrorCode.UNAUTHORIZED,
-                    401,
-                ),
-            );
-        });
+    try {
+        const payload = await tokenService.verify(token);
+
+        request.userId = payload.userId;
+
+        next();
+    } catch (error: unknown) {
+        next(error);
+    }
 };
