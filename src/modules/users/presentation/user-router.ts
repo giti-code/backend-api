@@ -15,6 +15,10 @@ userRouter.get(
     '/me',
     authenticationMiddleware,
     getCurrentUserController,
-)
+);
 
-userRouter.get('/:id', getUserByIdController);
+userRouter.get(
+    '/:id',
+    authenticationMiddleware,
+    getUserByIdController
+);
