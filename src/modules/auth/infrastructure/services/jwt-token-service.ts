@@ -1,6 +1,6 @@
-import { SignJWT } from 'jose';
+import {SignJWT, jwtVerify} from 'jose';
 
-import { env } from '../../../../config/env.js';
+import {env} from '../../../../config/env.js';
 import type {
     TokenPayload,
     TokenService,
@@ -19,5 +19,17 @@ export class JwtTokenService implements TokenService {
             .setIssuedAt()
             .setExpirationTime('15m')
             .sign(secret);
+    }
+
+    async verify(token: string): Promise<TokenPayload> {
+        const {payload} = await jwtVerify(token, secret);
+
+        if (typeof payload.userId !== 'string') {
+            throw new Error('Invalid token payload');
+        }
+
+        return {
+            userId: payload.userId,
+        };
     }
 }
