@@ -3,5 +3,5 @@ export interface TokenPayload {
 }
 
 export interface TokenService {
-    generate(payload: TokenPayload): string;
+    generate(payload: TokenPayload): Promise<string>;
 }
