@@ -46,8 +46,6 @@ export class RefreshAccessTokenUseCase {
       throw new AppError('Invalid refresh token', ErrorCode.UNAUTHORIZED, 401);
     }
 
-    await this.refreshTokenRepository.revoke(refreshToken.id);
-
     const newRefreshToken = this.refreshTokenGenerator.generate();
 
     const newTokenHash = this.refreshTokenGenerator.hash(newRefreshToken);
@@ -55,7 +53,7 @@ export class RefreshAccessTokenUseCase {
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + 30);
 
-    await this.refreshTokenRepository.create({
+    await this.refreshTokenRepository.rotate(refreshToken.id, {
       id: this.refreshTokenGenerator.generateId(),
       userId: user.id,
       tokenHash: newTokenHash,
