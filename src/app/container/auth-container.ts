@@ -6,9 +6,12 @@ import { PrismaRefreshTokenRepository } from '../../modules/auth/infrastructure/
 import { CryptoRefreshTokenGenerator } from '../../modules/auth/infrastructure/services/crypto-refresh-token-generator.js';
 import { RefreshAccessTokenUseCase } from '../../modules/auth/application/use-cases/refresh-access-token.js';
 import { LogoutUseCase } from '../../modules/auth/application/use-cases/logout.js';
+import { PrismaAuthorizationRepository } from '../../modules/auth/infrastructure/prisma-authorization-repository.js';
+import { DefaultAuthorizationService } from '../../modules/auth/infrastructure/services/authorization-service.js';
 
 const userRepository = new PrismaUserRepository();
 const passwordHasher = new Argon2PasswordHasher();
+const authorizationRepository = new PrismaAuthorizationRepository();
 
 export const tokenService = new JwtTokenService();
 
@@ -31,3 +34,5 @@ export const refreshAccessTokenUseCase = new RefreshAccessTokenUseCase(
 );
 
 export const logoutUseCase = new LogoutUseCase(refreshTokenRepository, refreshTokenGenerator);
+
+export const authorizationService = new DefaultAuthorizationService(authorizationRepository);
