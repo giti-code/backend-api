@@ -4,6 +4,7 @@ import {Argon2PasswordHasher} from '../../modules/users/infrastructure/services/
 import {PrismaUserRepository} from '../../modules/users/infrastructure/prisma-user-repository.js';
 import {PrismaRefreshTokenRepository} from "../../modules/auth/infrastructure/prisma-refresh-token-repository.js";
 import {CryptoRefreshTokenGenerator} from "../../modules/auth/infrastructure/services/crypto-refresh-token-generator.js";
+import { RefreshAccessTokenUseCase } from '../../modules/auth/application/use-cases/refresh-access-token.js';
 
 const userRepository = new PrismaUserRepository();
 const passwordHasher = new Argon2PasswordHasher();
@@ -14,9 +15,16 @@ export const refreshTokenRepository = new PrismaRefreshTokenRepository();
 export const refreshTokenGenerator = new CryptoRefreshTokenGenerator();
 
 export const loginUseCase = new LoginUseCase(
-    userRepository,
-    passwordHasher,
-    tokenService,
-    refreshTokenRepository,
-    refreshTokenGenerator,
+  userRepository,
+  passwordHasher,
+  tokenService,
+  refreshTokenRepository,
+  refreshTokenGenerator,
+);
+
+export const refreshAccessTokenUseCase = new RefreshAccessTokenUseCase(
+  refreshTokenRepository,
+  refreshTokenGenerator,
+  userRepository,
+  tokenService,
 );
