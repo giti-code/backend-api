@@ -12,6 +12,7 @@ interface RefreshAccessTokenInput {
 
 interface RefreshAccessTokenResult {
   accessToken: string;
+  refreshToken: string;
 }
 
 export class RefreshAccessTokenUseCase {
@@ -45,12 +46,31 @@ export class RefreshAccessTokenUseCase {
       throw new AppError('Invalid refresh token', ErrorCode.UNAUTHORIZED, 401);
     }
 
+    await this.refreshTokenRepository.revoke(refreshToken.id);
+
+    const newRefreshToken = this.refreshTokenGenerator.generate();
+
+    const newTokenHash = this.refreshTokenGenerator.hash(newRefreshToken);
+
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 30);
+
+    await this.refreshTokenRepository.create({
+      id: this.refreshTokenGenerator.generateId(),
+      userId: user.id,
+      tokenHash: newTokenHash,
+      expiresAt,
+      revokedAt: null,
+      createdAt: new Date(),
+    });
+
     const accessToken = await this.tokenService.generate({
       userId: user.id,
     });
 
     return {
       accessToken,
+      refreshToken: newRefreshToken,
     };
   }
 }
