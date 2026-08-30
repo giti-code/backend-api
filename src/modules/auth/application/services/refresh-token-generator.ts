@@ -1,7 +1,7 @@
 export interface RefreshTokenGenerator {
-    generate(): string;
+  generate(): string;
 
-    generateId(): string;
+  generateId(): string;
 
-    hash(token: string): string;
+  hash(token: string): string;
 }

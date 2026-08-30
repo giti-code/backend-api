@@ -1,9 +1,9 @@
 export interface TokenPayload {
-    userId: string;
+  userId: string;
 }
 
 export interface TokenService {
-    generate(payload: TokenPayload): Promise<string>;
+  generate(payload: TokenPayload): Promise<string>;
 
-    verify(token: string): Promise<TokenPayload>;
+  verify(token: string): Promise<TokenPayload>;
 }
